@@ -1,7 +1,19 @@
 let currentResult = 0;
+const logentries = [];
 
 function CreateAndWriteOutput(opp, oldNumber, newNumber) {
   outputResult(currentResult, `${oldNumber} ${opp} ${newNumber}`);
+}
+
+function logger(opp, initialVal, currentVal, currentResult) {
+  const logEntry = {
+    operator: opp,
+    prevNum: initialVal,
+    newNum: currentVal,
+    currentRes: currentResult,
+  };
+  logentries.push(logEntry);
+  console.log(logentries);
 }
 
 function add() {
@@ -9,6 +21,7 @@ function add() {
   const currentVal = parseInt(userInput.value);
   currentResult += currentVal;
   CreateAndWriteOutput("+", initialVal, currentVal);
+  logger("ADD", initialVal, currentVal, currentResult);
 }
 
 function substract() {
@@ -16,6 +29,7 @@ function substract() {
   const currentVal = parseInt(userInput.value);
   currentResult -= currentVal;
   CreateAndWriteOutput("-", initialVal, currentVal);
+  logger("SUB", initialVal, currentVal, currentResult);
 }
 
 function multiply() {
@@ -23,6 +37,7 @@ function multiply() {
   const currentVal = parseInt(userInput.value);
   currentResult *= currentVal;
   CreateAndWriteOutput("*", initialVal, currentVal);
+  logger("MUL", initialVal, currentVal, currentResult);
 }
 
 function divide() {
@@ -30,6 +45,7 @@ function divide() {
   const currentVal = parseInt(userInput.value);
   currentResult /= currentVal;
   CreateAndWriteOutput("/", initialVal, currentVal);
+  logger("DIV", initialVal, currentVal, currentResult);
 }
 
 addBtn.addEventListener("click", add);
