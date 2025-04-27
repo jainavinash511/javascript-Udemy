@@ -13,7 +13,6 @@ function logger(opp, initialVal, currentVal, currentResult) {
     currentRes: currentResult,
   };
   logentries.push(logEntry);
-  console.log(logentries);
 }
 
 function add() {
