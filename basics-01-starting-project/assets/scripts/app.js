@@ -1,31 +1,50 @@
 let currentResult = 0;
+const logentries = [];
+
+function CreateAndWriteOutput(opp, oldNumber, newNumber) {
+  outputResult(currentResult, `${oldNumber} ${opp} ${newNumber}`);
+}
+
+function logger(opp, initialVal, currentVal, currentResult) {
+  const logEntry = {
+    operator: opp,
+    prevNum: initialVal,
+    newNum: currentVal,
+    currentRes: currentResult,
+  };
+  logentries.push(logEntry);
+}
 
 function add() {
   const initialVal = currentResult;
   const currentVal = parseInt(userInput.value);
   currentResult += currentVal;
-  outputResult(currentResult, `${initialVal} + ${currentVal}`);
+  CreateAndWriteOutput("+", initialVal, currentVal);
+  logger("ADD", initialVal, currentVal, currentResult);
 }
 
 function substract() {
   const initialVal = currentResult;
   const currentVal = parseInt(userInput.value);
   currentResult -= currentVal;
-  outputResult(currentResult, `${initialVal} - ${currentVal}`);
+  CreateAndWriteOutput("-", initialVal, currentVal);
+  logger("SUB", initialVal, currentVal, currentResult);
 }
 
 function multiply() {
   const initialVal = currentResult;
   const currentVal = parseInt(userInput.value);
   currentResult *= currentVal;
-  outputResult(currentResult, `${initialVal} * ${currentVal}`);
+  CreateAndWriteOutput("*", initialVal, currentVal);
+  logger("MUL", initialVal, currentVal, currentResult);
 }
 
 function divide() {
   const initialVal = currentResult;
   const currentVal = parseInt(userInput.value);
   currentResult /= currentVal;
-  outputResult(currentResult, `${initialVal} / ${currentVal}`);
+  CreateAndWriteOutput("/", initialVal, currentVal);
+  logger("DIV", initialVal, currentVal, currentResult);
 }
 
 addBtn.addEventListener("click", add);
