@@ -15,36 +15,40 @@ function logger(opp, initialVal, currentVal, currentResult) {
   logentries.push(logEntry);
 }
 
-function add() {
+function calculateResult(calType) {
   const initialVal = currentResult;
   const currentVal = parseInt(userInput.value);
-  currentResult += currentVal;
-  CreateAndWriteOutput("+", initialVal, currentVal);
-  logger("ADD", initialVal, currentVal, currentResult);
+  let mathopp;
+  if (calType === "ADD") {
+    currentResult += currentVal;
+    mathopp = "+";
+  } else if (calType === "SUB") {
+    currentResult -= currentVal;
+    mathopp = "-";
+  } else if (calType === "MUL") {
+    currentResult *= currentVal;
+    mathopp = "*";
+  } else {
+    currentResult /= currentVal;
+    mathopp = "/";
+  }
+  CreateAndWriteOutput(mathopp, initialVal, currentVal);
+  logger(calType, initialVal, currentVal, currentResult);
+}
+function add() {
+  calculateResult("ADD");
 }
 
 function substract() {
-  const initialVal = currentResult;
-  const currentVal = parseInt(userInput.value);
-  currentResult -= currentVal;
-  CreateAndWriteOutput("-", initialVal, currentVal);
-  logger("SUB", initialVal, currentVal, currentResult);
+  calculateResult("SUB");
 }
 
 function multiply() {
-  const initialVal = currentResult;
-  const currentVal = parseInt(userInput.value);
-  currentResult *= currentVal;
-  CreateAndWriteOutput("*", initialVal, currentVal);
-  logger("MUL", initialVal, currentVal, currentResult);
+  calculateResult("MUL");
 }
 
 function divide() {
-  const initialVal = currentResult;
-  const currentVal = parseInt(userInput.value);
-  currentResult /= currentVal;
-  CreateAndWriteOutput("/", initialVal, currentVal);
-  logger("DIV", initialVal, currentVal, currentResult);
+  calculateResult("DIV");
 }
 
 addBtn.addEventListener("click", add);
