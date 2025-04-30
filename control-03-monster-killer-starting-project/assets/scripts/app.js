@@ -21,5 +21,5 @@ function attackHandler() {
     alert("Draw");
   }
 }
-kjfnierf;
+
 attackBtn.addEventListener("click", attackHandler);
