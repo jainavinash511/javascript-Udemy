@@ -19,21 +19,23 @@ function calculateResult(calType) {
   const initialVal = currentResult;
   const currentVal = parseInt(userInput.value);
   let mathopp;
-  if (calType === "ADD") {
-    currentResult += currentVal;
-    mathopp = "+";
-  } else if (calType === "SUB") {
-    currentResult -= currentVal;
-    mathopp = "-";
-  } else if (calType === "MUL") {
-    currentResult *= currentVal;
-    mathopp = "*";
-  } else {
-    currentResult /= currentVal;
-    mathopp = "/";
+  if (currentVal) {
+    if (calType === "ADD") {
+      currentResult += currentVal;
+      mathopp = "+";
+    } else if (calType === "SUB") {
+      currentResult -= currentVal;
+      mathopp = "-";
+    } else if (calType === "MUL") {
+      currentResult *= currentVal;
+      mathopp = "*";
+    } else {
+      currentResult /= currentVal;
+      mathopp = "/";
+    }
+    CreateAndWriteOutput(mathopp, initialVal, currentVal);
+    logger(calType, initialVal, currentVal, currentResult);
   }
-  CreateAndWriteOutput(mathopp, initialVal, currentVal);
-  logger(calType, initialVal, currentVal, currentResult);
 }
 function add() {
   calculateResult("ADD");
