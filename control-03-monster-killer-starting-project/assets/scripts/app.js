@@ -95,7 +95,6 @@ function attackMode(mode) {
       currentMonsterHealth
     );
   }
-
   endGame();
 }
 
