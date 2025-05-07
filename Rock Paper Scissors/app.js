@@ -19,7 +19,7 @@ function getPlayerChoice() {
   return choice;
 }
 
-function getComputerChoice() {
+const getComputerChoice = function () {
   const randomNum = Math.random();
   if (randomNum < 0.34) {
     return ROCK;
@@ -28,7 +28,7 @@ function getComputerChoice() {
   } else {
     return SCISSORS;
   }
-}
+};
 
 const getWinnerArrow = (cChoice, pChoice) => {
   return cChoice === pChoice
