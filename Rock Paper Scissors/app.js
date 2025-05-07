@@ -30,6 +30,15 @@ function getComputerChoice() {
   }
 }
 
+const getWinnerArrow = (cChoice, pChoice) => {
+  return cChoice === pChoice
+    ? RESULT_DRAW
+    : (cChoice === ROCK && pChoice === PAPER) ||
+      (cChoice === PAPER && pChoice === SCISSORS) ||
+      (cChoice === SCISSORS && pChoice === ROCK)
+    ? RESULT_PLAYER_WINEER
+    : RESULT_COMPUTER_WINEER;
+};
 function getWinner(cChoice, pChoice) {
   if (cChoice === pChoice) {
     return RESULT_DRAW;
@@ -50,7 +59,7 @@ startGameBtn.addEventListener("click", function () {
   console.log("Player Choice ", playerChoice);
   const computerChoice = getComputerChoice();
   console.log("Computer Choice ", computerChoice);
-  const winner = getWinner(computerChoice, playerChoice);
+  const winner = getWinnerArrow(computerChoice, playerChoice);
   console.log("Winner ", winner);
   return true;
 });
