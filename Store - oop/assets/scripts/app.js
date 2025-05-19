@@ -12,6 +12,9 @@ class ProductList {
     new product("Pillow", "", 19.99, "A Nice Pillow"),
     new product("Carpet", "", 89.99, "A Nice Carpet"),
   ];
+  buttonhandler() {
+    console.log("Added to the cart");
+  }
   render() {
     const displayList = document.getElementById("app");
     const productsEle = document.createElement("ul");
@@ -29,6 +32,8 @@ class ProductList {
             <div>
         </div>
         `;
+      const addToCartButton = prodEle.querySelector("button");
+      addToCartButton.addEventListener("click", this.buttonhandler);
       productsEle.append(prodEle);
     }
     displayList.append(productsEle);
